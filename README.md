@@ -9,12 +9,12 @@ this is the golang version of µmarkdown, take a look at the
 
 License:   MIT  
 Version: 0.1.0  
-Date:  02.2014  
+Date:  03.2014  
 
 ##howto
 
 ```go
-go run micromarkdown.go
+go run mmd-test.go
 ```
 
 ##contact
