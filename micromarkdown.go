@@ -1,8 +1,7 @@
-package main
+package micromarkdown
 
 import (
 	"fmt"
-	"io/ioutil"
 	"regexp"
 	"strconv"
 	"strings"
@@ -30,7 +29,7 @@ func (s *Stack) Pop() string {
 	return s.nodes[s.count]
 }
 
-func micromarkdown(str string) string {
+func Micromarkdown(str string) string {
 	var stra [][]string
 	var count int
 	var casca int
@@ -184,20 +183,3 @@ func micromarkdown(str string) string {
 	return str
 }
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
-func main() {
-	mdfile, err1 := ioutil.ReadFile("./markdown.md")
-	check(err1)
-	htmlfile, err2 := ioutil.ReadFile("./html.html")
-	check(err2)
-	md := micromarkdown(string(mdfile))
-	output := []byte(strings.Replace(string(htmlfile), "$INSERT_PARSED_MARKDOWN", md, 1))
-	fmt.Println(string(md))
-	err3 := ioutil.WriteFile("./index.html", output, 0644)
-	check(err3)
-}
