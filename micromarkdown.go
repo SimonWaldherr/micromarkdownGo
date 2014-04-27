@@ -36,7 +36,7 @@ func Micromarkdown(str string) string {
 	var status int
 	var nstatus int
 	var line []string
-	indent := -1
+	var indent int = -1
 	var repstr string
 	var reparr []string
 	var helper []string
@@ -44,15 +44,15 @@ func Micromarkdown(str string) string {
 	var helparr2 []string
 	helper1 := Lifo()
 
-	htmlEncode     := strings.NewReplacer("<", "&lt;", ">", "&gt;", "&", "&#38;", "\"", "&#34;", "'", "&#39;", " ", "&nbsp;", "*", "&#8727;", "\t", "&nbsp;&nbsp;", "\n", "\n<br>")
-	headline, _    := regexp.Compile("(?m)^(\\#{1,6})([^\\#\\n]+)$")
-	code, _        := regexp.Compile("(?m)\\s```\\n?([^`]+)```")
-	hr, _          := regexp.Compile("(?m)^([\\*\\-_] ?){3,}$")
-	lists, _       := regexp.Compile("(?m)^((\\s*((\\*|\\-)|\\d(\\.|\\))) [^\\n]+)\\n)+")
-	liner, _       := regexp.Compile("(?m)^((\\s*)((\\*|\\-)|\\d(\\.|\\))) ([^\\n]+))")
+	htmlEncode := strings.NewReplacer("<", "&lt;", ">", "&gt;", "&", "&#38;", "\"", "&#34;", "'", "&#39;", " ", "&nbsp;", "*", "&#8727;", "\t", "&nbsp;&nbsp;", "\n", "\n<br>")
+	headline, _ := regexp.Compile("(?m)^(\\#{1,6})([^\\#\\n]+)$")
+	code, _ := regexp.Compile("(?m)\\s```\\n?([^`]+)```")
+	hr, _ := regexp.Compile("(?m)^([\\*\\-_] ?){3,}$")
+	lists, _ := regexp.Compile("(?m)^((\\s*((\\*|\\-)|\\d(\\.|\\))) [^\\n]+)\\n)+")
+	liner, _ := regexp.Compile("(?m)^((\\s*)((\\*|\\-)|\\d(\\.|\\))) ([^\\n]+))")
 	bolditalics, _ := regexp.Compile("(?m)([\\*_~]{1,3})([^\\*_~\\n]+[^\\*_~\\s])([\\*_~]{1,3})")
-	links, _       := regexp.Compile("!?\\[([^\\]<>]+)\\]\\(([^ \\)<>]+)( \"[^\\(\\)\"]+\")?\\)")
-	tables, _      := regexp.Compile("(?m)\\n(([^|\\n]+ *\\| *)+([^|\\n]+\\n))(\\-+\\|)+(\\-+\\n)((([^|\\n]+ *\\| *)+([^|\\n]+)\\n)+)")
+	links, _ := regexp.Compile("!?\\[([^\\]<>]+)\\]\\(([^ \\)<>]+)( \"[^\\(\\)\"]+\")?\\)")
+	tables, _ := regexp.Compile("(?m)\\n(([^|\\n]+ *\\| *)+([^|\\n]+\\n))(\\-+\\|)+(\\-+\\n)((([^|\\n]+ *\\| *)+([^|\\n]+)\\n)+)")
 
 	/* code */
 	stra = code.FindAllStringSubmatch(str, -1)
@@ -182,4 +182,3 @@ func Micromarkdown(str string) string {
 
 	return str
 }
-

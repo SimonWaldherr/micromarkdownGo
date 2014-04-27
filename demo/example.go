@@ -1,10 +1,10 @@
 package main
 
 import (
+	micromarkdown "../"
 	"fmt"
-	"strings"
 	"io/ioutil"
-	"./micromarkdown"
+	"strings"
 )
 
 func check(e error) {

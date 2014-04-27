@@ -1,20 +1,41 @@
 #micromarkdown.go
 
 convert [markdown](http://en.wikipedia.org/wiki/Markdown) to [HTML](http://en.wikipedia.org/wiki/HTML) via golang  
-this is the golang version of µmarkdown, take a look at the 
-[PHP version](https://github.com/SimonWaldherr/micromarkdown.php) and the 
+this is the golang version of µmarkdown, take a look at the
+[PHP version](https://github.com/SimonWaldherr/micromarkdown.php) and the
 [JavaScript version](https://github.com/SimonWaldherr/micromarkdown.js).
 
 ##about
 
 License:   MIT  
-Version: 0.1.0  
-Date:  03.2014  
+Version: 0.1.1  
+Date:  04.2014  
 
 ##howto
 
+###test
+
+```sh
+wget https://github.com/SimonWaldherr/micromarkdown.go/archive/master.zip --no-check-certificate
+unzip master.zip
+cd ./micromarkdown.go-master/demo/
+go run example.go
+```
+
+###use
+
+```sh
+go get github.com/SimonWaldherr/micromarkdown.go
+```
+
 ```go
-go run mmd-test.go
+import mmd "github.com/SimonWaldherr/micromarkdown.go"
+import "fmt"
+
+func main() {
+  md := mmd.Micromarkdown("#title\n\nlorem *ipsum* dolor sit\namet pluribus **procrastinatio**\n")
+  fmt.Println(string(md))
+}
 ```
 
 ##contact
