@@ -54,6 +54,7 @@ you can find me on:
 * GitHub @SimonWaldherr@gh
 * Facebook @SimonWaldherr@fb
 * Google+ @SimonWaldherr@gp
+* <contact@simonwaldherr.de>
 
 most markdown scripts also allow to include HTML:  
 

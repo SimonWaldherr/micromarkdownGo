@@ -31,17 +31,10 @@ func (s *Stack) Pop() string {
 
 func Micromarkdown(str string) string {
 	var stra [][]string
-	var count int
-	var casca int
-	var status int
-	var nstatus int
-	var line []string
 	var indent int = -1
 	var repstr string
-	var reparr []string
-	var helper []string
-	var helparr1 []string
-	var helparr2 []string
+	var count, casca, status, nstatus int
+	var line, reparr, helper, helparr1, helparr2 []string
 	helper1 := Lifo()
 
 	htmlEncode := strings.NewReplacer("<", "&lt;", ">", "&gt;", "&", "&#38;", "\"", "&#34;", "'", "&#39;", " ", "&nbsp;", "*", "&#8727;", "\t", "&nbsp;&nbsp;", "\n", "\n<br>")
@@ -52,6 +45,7 @@ func Micromarkdown(str string) string {
 	liner, _ := regexp.Compile("(?m)^((\\s*)((\\*|\\-)|\\d(\\.|\\))) ([^\\n]+))")
 	bolditalics, _ := regexp.Compile("(?m)([\\*_~]{1,3})([^\\*_~\\n]+[^\\*_~\\s])([\\*_~]{1,3})")
 	links, _ := regexp.Compile("!?\\[([^\\]<>]+)\\]\\(([^ \\)<>]+)( \"[^\\(\\)\"]+\")?\\)")
+	mail, _ := regexp.Compile("<(([a-z0-9_\\-\\.])+\\@([a-z0-9_\\-\\.])+\\.([a-z]{2,7}))>")
 	tables, _ := regexp.Compile("(?m)\\n(([^|\\n]+ *\\| *)+([^|\\n]+\\n))(\\-+\\|)+(\\-+\\n)((([^|\\n]+ *\\| *)+([^|\\n]+)\\n)+)")
 
 	/* code */
@@ -172,6 +166,10 @@ func Micromarkdown(str string) string {
 		} else {
 			str = strings.Replace(str, stra[i][0], "<a href=\""+stra[i][2]+"\">"+stra[i][1]+"</a>\n", -1)
 		}
+	}
+	stra = mail.FindAllStringSubmatch(str, -1)
+	for i := 0; i < len(stra); i++ {
+		str = strings.Replace(str, stra[i][0], "<a href=\"mailto:"+stra[i][1]+"\">"+stra[i][1]+"</a>\n", -1)
 	}
 
 	/* horizontal line */

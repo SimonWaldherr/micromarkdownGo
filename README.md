@@ -8,8 +8,8 @@ this is the golang version of µmarkdown, take a look at the
 ##about
 
 License:   MIT  
-Version: 0.1.1  
-Date:  04.2014  
+Version: 0.1.2  
+Date:  07.2014  
 
 ##howto
 
