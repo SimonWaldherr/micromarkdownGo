@@ -7,13 +7,13 @@ import (
 	"strings"
 )
 
-func Lifo() *Stack {
-	return &Stack{}
-}
-
 type Stack struct {
 	nodes []string
 	count int
+}
+
+func Lifo() *Stack {
+	return &Stack{}
 }
 
 func (s *Stack) Push(n string) {

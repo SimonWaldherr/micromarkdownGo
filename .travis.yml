@@ -1,0 +1,16 @@
+language: go
+
+go:
+  - 1.2
+  - 1.3
+  - tip
+
+script:
+    - go test -v .
+
+notifications:
+  email:
+    recipients:
+      - travis@simon.waldherr.eu
+    on_success: always
+    on_failure: always
