@@ -65,3 +65,9 @@ func Test_HR(t *testing.T) {
 		t.Error(Micromarkdown("---"))
 	}
 }
+
+func Test_Table(t *testing.T) {
+	if nltrim(Micromarkdown("\nthis | *left* | center   | right\n-----|--------|----------|-------\nwith | sample | content  | for\nlorem| ipsum  | dolor    | sit\nsit  | amet   | sed      | do\ndo   | eiusom | tempor   | with\n")) != "<table><tr><th>this </th><th> <i>left</i> </th><th> center   </th><th> right\n</th></tr><tr><td>with </td><td> sample </td><td> content  </td><td> for</td></tr>\n<tr><td>lorem</td><td> ipsum  </td><td> dolor    </td><td> sit</td></tr>\n<tr><td>sit  </td><td> amet   </td><td> sed      </td><td> do</td></tr>\n<tr><td>do   </td><td> eiusom </td><td> tempor   </td><td> with</td></tr>\n</table>" {
+		t.Error(Micromarkdown("\nthis | *left* | center   | right\n-----|--------|----------|-------\nwith | sample | content  | for\nlorem| ipsum  | dolor    | sit\nsit  | amet   | sed      | do\ndo   | eiusom | tempor   | with\n"))
+	}
+}

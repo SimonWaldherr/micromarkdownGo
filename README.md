@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/SimonWaldherr/micromarkdownGo.svg?branch=master)](https://travis-ci.org/SimonWaldherr/micromarkdownGo)
 [![GoDoc](https://godoc.org/github.com/SimonWaldherr/micromarkdownGo?status.svg)](https://godoc.org/github.com/SimonWaldherr/micromarkdownGo)
+[![License MIT](http://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![Coverage Status](https://img.shields.io/coveralls/SimonWaldherr/micromarkdownGo.svg)](https://coveralls.io/r/SimonWaldherr/micromarkdownGo)
 [![Gittip donate button](http://img.shields.io/gittip/bevry.png)](https://www.gittip.com/SimonWaldherr/ "Donate weekly to this project using Gittip")
 [![Flattr donate button](https://raw.github.com/balupton/flattr-buttons/master/badge-89x18.gif)](https://flattr.com/submit/auto?user_id=SimonWaldherr&url=http%3A%2F%2Fgithub.com%2FSimonWaldherr%2FmicromarkdownGo "Donate monthly to this project using Flattr")
