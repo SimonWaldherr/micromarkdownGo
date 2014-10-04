@@ -28,11 +28,18 @@ func Test_Main(t *testing.T) {
 	err3 := ioutil.WriteFile("./demo/index.html", output, 0644)
 	check(err3, t)
 	t.Log("please check the index.html file")
+	fmt.Println("\n\nStarting tests...\nplease wait...\n")
 }
 
 func Test_Bold(t *testing.T) {
 	if Micromarkdown("**BOLD**") != "<b>BOLD</b>" {
 		t.Error(Micromarkdown("**BOLD**"))
+	}
+}
+
+func Test_Headline(t *testing.T) {
+	if Micromarkdown("###Head") != "<h3>Head</h3>" {
+		t.Error(Micromarkdown("###Head"))
 	}
 }
 
@@ -67,7 +74,7 @@ func Test_HR(t *testing.T) {
 }
 
 func Test_Table(t *testing.T) {
-	if nltrim(Micromarkdown("\nthis | *left* | center   | right\n-----|--------|----------|-------\nwith | sample | content  | for\nlorem| ipsum  | dolor    | sit\nsit  | amet   | sed      | do\ndo   | eiusom | tempor   | with\n")) != "<table><tr><th>this </th><th> <i>left</i> </th><th> center   </th><th> right\n</th></tr><tr><td>with </td><td> sample </td><td> content  </td><td> for</td></tr>\n<tr><td>lorem</td><td> ipsum  </td><td> dolor    </td><td> sit</td></tr>\n<tr><td>sit  </td><td> amet   </td><td> sed      </td><td> do</td></tr>\n<tr><td>do   </td><td> eiusom </td><td> tempor   </td><td> with</td></tr>\n</table>" {
-		t.Error(Micromarkdown("\nthis | *left* | center   | right\n-----|--------|----------|-------\nwith | sample | content  | for\nlorem| ipsum  | dolor    | sit\nsit  | amet   | sed      | do\ndo   | eiusom | tempor   | with\n"))
+	if nltrim(Micromarkdown("\nthis | left | center   | right\n-----|--------|----------|-------\nwith | sample | content  | for\nlorem| ipsum  | dolor    | sit\nsit  | amet   | sed      | do\ndo   | eiusom | tempor   | with\n")) != "<table><tr><th>this </th><th> left </th><th> center   </th><th> right\n</th></tr><tr><td>with </td><td> sample </td><td> content  </td><td> for</td></tr>\n<tr><td>lorem</td><td> ipsum  </td><td> dolor    </td><td> sit</td></tr>\n<tr><td>sit  </td><td> amet   </td><td> sed      </td><td> do</td></tr>\n<tr><td>do   </td><td> eiusom </td><td> tempor   </td><td> with</td></tr>\n</table>" {
+		t.Error(Micromarkdown("\nthis | left | center   | right\n-----|--------|----------|-------\nwith | sample | content  | for\nlorem| ipsum  | dolor    | sit\nsit  | amet   | sed      | do\ndo   | eiusom | tempor   | with\n"))
 	}
 }

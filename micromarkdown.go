@@ -1,7 +1,6 @@
 package micromarkdown
 
 import (
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -12,16 +11,16 @@ type Stack struct {
 	count int
 }
 
-func Lifo() *Stack {
+func lifo() *Stack {
 	return &Stack{}
 }
 
-func (s *Stack) Push(n string) {
+func (s *Stack) push(n string) {
 	s.nodes = append(s.nodes[:s.count], n)
 	s.count++
 }
 
-func (s *Stack) Pop() string {
+func (s *Stack) pop() string {
 	if s.count == 0 {
 		return ""
 	}
@@ -35,7 +34,7 @@ func Micromarkdown(str string) string {
 	var repstr string
 	var count, casca, status, nstatus int
 	var line, reparr, helper, helparr1, helparr2 []string
-	helper1 := Lifo()
+	helper1 := lifo()
 
 	htmlEncode := strings.NewReplacer("<", "&lt;", ">", "&gt;", "&", "&#38;", "\"", "&#34;", "'", "&#39;", " ", "&nbsp;", "*", "&#8727;", "\t", "&nbsp;&nbsp;", "\n", "\n<br>")
 	headline, _ := regexp.Compile("(?m)^(\\#{1,6})([^\\#\\n]+)$")
@@ -84,17 +83,17 @@ func Micromarkdown(str string) string {
 				nstatus = int(len(strings.Replace(line[2], "\t", "    ", -1)) / indent)
 			}
 			for status > nstatus {
-				repstr += helper1.Pop()
+				repstr += helper1.pop()
 				status--
 				casca--
 			}
 			for status < nstatus {
 				if strings.TrimSpace(stra[i][0])[0:1] == "*" {
 					repstr += "<ul>"
-					helper1.Push("</ul>")
+					helper1.push("</ul>")
 				} else {
 					repstr += "<ol>"
-					helper1.Push("</ol>")
+					helper1.push("</ol>")
 				}
 				status++
 				casca++
@@ -134,7 +133,6 @@ func Micromarkdown(str string) string {
 			}
 		}
 		repstr += "</table>"
-		fmt.Println(repstr)
 		str = strings.Replace(str, stra[i][0], repstr, 1)
 	}
 
